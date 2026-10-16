@@ -1,6 +1,6 @@
 # Astral Barrage
 
-A minimal C++17 desktop project using [raylib](https://github.com/raysan5/raylib) 6.0.
+A C++17 desktop project using [raylib](https://github.com/raysan5/raylib) 6.0. It loads a GLSL 330 fragment shader from a file and displays an animated full-screen background.
 
 ## Requirements
 
@@ -19,5 +19,7 @@ cmake --build build --config Debug
 ```
 
 The program opens a 1280 × 720 window. Close the window or press Escape to exit.
+
+The build copies `assets/shaders/background.fs` beside the executable. Edit that file in the source tree and rebuild to update the effect. Shader errors are printed to the terminal and cause the program to exit.
 
 Build output and downloaded dependencies stay under `build/` and are ignored by Git.
