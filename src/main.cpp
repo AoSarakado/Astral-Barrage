@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "rlgl.h"
 
+#include <cmath>
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
@@ -31,8 +32,12 @@ int main() {
 
     const int resolutionLocation = GetShaderLocation(shader, "resolution");
     const int timeLocation = GetShaderLocation(shader, "time");
-    if (resolutionLocation < 0 || timeLocation < 0) {
-        std::cerr << "GLSL fragment shader requires resolution and time uniforms: " << shaderFile << '\n';
+    const int lightPositionLocation = GetShaderLocation(shader, "lightPosition");
+    const int sphereCenterLocation = GetShaderLocation(shader, "sphereCenter");
+    if (resolutionLocation < 0 || timeLocation < 0 ||
+        lightPositionLocation < 0 || sphereCenterLocation < 0) {
+        std::cerr << "GLSL fragment shader requires resolution, time, lightPosition and sphereCenter uniforms: "
+                  << shaderFile << '\n';
         UnloadShader(shader);
         CloseWindow();
         return EXIT_FAILURE;
@@ -45,8 +50,14 @@ int main() {
             static_cast<float>(GetRenderWidth()), static_cast<float>(GetRenderHeight())
         };
         const float time = static_cast<float>(GetTime());
+        const float lightPosition[3] = {
+            2.8f*std::cos(time*0.7f), 3.2f, 2.8f*std::sin(time*0.7f)
+        };
+        const float sphereCenter[3] = { 0.0f, -0.15f, 0.0f };
         SetShaderValue(shader, resolutionLocation, resolution, SHADER_UNIFORM_VEC2);
         SetShaderValue(shader, timeLocation, &time, SHADER_UNIFORM_FLOAT);
+        SetShaderValue(shader, lightPositionLocation, lightPosition, SHADER_UNIFORM_VEC3);
+        SetShaderValue(shader, sphereCenterLocation, sphereCenter, SHADER_UNIFORM_VEC3);
 
         BeginDrawing();
         ClearBackground(BLACK);
