@@ -2,6 +2,8 @@
 
 A minimal C++17 desktop project using [raylib](https://github.com/raysan5/raylib) 6.0.
 
+The overall product definition is pending. See the [project brief template](docs/PROJECT_BRIEF.md) for the decisions that still need confirmation.
+
 ## Requirements
 
 - CMake 3.24 or newer
