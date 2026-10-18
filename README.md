@@ -5,6 +5,8 @@ The current window renders a Kerr–Newman black hole background from the
 five-pass [ShaderToy work](https://www.shadertoy.com/view/wXdfzj), with the
 `Astral Barrage` title drawn above it.
 
+The overall product definition is pending. See the [project brief template](docs/PROJECT_BRIEF.md) for the decisions that still need confirmation.
+
 ## Requirements
 
 - CMake 3.24 or newer
