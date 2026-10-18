@@ -20,10 +20,10 @@ FetchContent_MakeAvailable(raylib)
 add_executable(AstralBarrage src/main.cpp)
 target_link_libraries(AstralBarrage PRIVATE raylib)
 
-add_custom_command(TARGET AstralBarrage POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:AstralBarrage>/assets/shaders"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_CURRENT_SOURCE_DIR}/assets/shaders/background.fs"
-        "$<TARGET_FILE_DIR:AstralBarrage>/assets/shaders/background.fs"
+add_custom_target(copy_shaders ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/assets/shaders/kerr_newman"
+        "$<TARGET_FILE_DIR:AstralBarrage>/assets/shaders/kerr_newman"
+    DEPENDS AstralBarrage
     VERBATIM
 )
