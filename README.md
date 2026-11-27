@@ -7,6 +7,8 @@ Kerr–Newman black hole animation from the five-pass
 [pl_mpeg](https://github.com/phoboslab/pl_mpeg) at commit
 `c871f2be022ece7ef4f64230b4fb8e1fb9eb6023` (MIT license).
 
+The overall product definition is pending. See the [project brief template](docs/PROJECT_BRIEF.md) for the decisions that still need confirmation.
+
 ## Requirements
 
 - CMake 3.24 or newer
