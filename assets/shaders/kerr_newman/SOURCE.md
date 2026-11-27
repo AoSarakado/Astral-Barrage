@@ -11,6 +11,10 @@
   wrapper for raylib. The source comments credit sonicether's
   [Gargantua With HDR Bloom](https://www.shadertoy.com/view/lstSRS) for parts
   of the bloom pipeline.
+- `assets/background/kerr_newman.mpg` is a 4-second, 24 FPS video rendered from
+  these five passes with a fixed camera and encoded as MPEG-1. It is a derived
+  asset and has the same unresolved redistribution-rights question as the
+  shader source.
 - baopinsui's related [NPGS repository](https://github.com/baopinshui/NPGS)
   is published under GPL-3.0. The exact license for this archived ShaderToy
   snapshot, including the credited bloom portions, has not been independently

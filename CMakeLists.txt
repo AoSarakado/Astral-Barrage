@@ -17,13 +17,32 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(raylib)
 
+FetchContent_Declare(
+    pl_mpeg
+    URL https://github.com/phoboslab/pl_mpeg/archive/c871f2be022ece7ef4f64230b4fb8e1fb9eb6023.tar.gz
+    DOWNLOAD_EXTRACT_TIMESTAMP OFF
+)
+FetchContent_MakeAvailable(pl_mpeg)
+
 add_executable(AstralBarrage src/main.cpp)
 target_link_libraries(AstralBarrage PRIVATE raylib)
+target_include_directories(AstralBarrage PRIVATE ${pl_mpeg_SOURCE_DIR})
+
+add_executable(AstralBarrageRenderBackground src/background_renderer.cpp)
+target_link_libraries(AstralBarrageRenderBackground PRIVATE raylib)
+
+add_custom_target(copy_background ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_CURRENT_SOURCE_DIR}/assets/background/kerr_newman.mpg"
+        "$<TARGET_FILE_DIR:AstralBarrage>/assets/background/kerr_newman.mpg"
+    DEPENDS AstralBarrage
+    VERBATIM
+)
 
 add_custom_target(copy_shaders ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_CURRENT_SOURCE_DIR}/assets/shaders/kerr_newman"
-        "$<TARGET_FILE_DIR:AstralBarrage>/assets/shaders/kerr_newman"
-    DEPENDS AstralBarrage
+        "$<TARGET_FILE_DIR:AstralBarrageRenderBackground>/assets/shaders/kerr_newman"
+    DEPENDS AstralBarrageRenderBackground
     VERBATIM
 )
