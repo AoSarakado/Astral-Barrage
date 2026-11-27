@@ -24,7 +24,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(pl_mpeg)
 
-add_executable(AstralBarrage src/main.cpp)
+add_executable(AstralBarrage src/main.cpp src/game.cpp)
 target_link_libraries(AstralBarrage PRIVATE raylib)
 target_include_directories(AstralBarrage PRIVATE ${pl_mpeg_SOURCE_DIR})
 

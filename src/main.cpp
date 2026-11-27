@@ -1,3 +1,4 @@
+#include "game.h"
 #include "raylib.h"
 
 #include <cstdio>
@@ -118,12 +119,14 @@ int main()
         }
     });
 
+    Game game(screenWidth, screenHeight);
     SetTargetFPS(60);
     while (!WindowShouldClose()) {
+        game.update();
         uploadPendingFrame(frames, background);
         BeginDrawing();
         DrawTexture(background, 0, 0, WHITE);
-        DrawText("Astral Barrage", 40, 40, 32, RAYWHITE);
+        game.draw();
         EndDrawing();
     }
 

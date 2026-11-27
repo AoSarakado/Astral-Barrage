@@ -1,9 +1,9 @@
 # Astral Barrage
 
-A C++17 desktop project using [raylib](https://github.com/raysan5/raylib) 6.0.
-The current window loops a pre-rendered Kerr–Newman black hole animation from
-the five-pass [ShaderToy work](https://www.shadertoy.com/view/wXdfzj), with the
-`Astral Barrage` title drawn above it. Runtime playback uses
+A single-screen desktop bullet-hell game built with C++17 and
+[raylib](https://github.com/raysan5/raylib) 6.0. The fight plays over a looping
+Kerr–Newman black hole animation from the five-pass
+[ShaderToy work](https://www.shadertoy.com/view/wXdfzj). Runtime playback uses
 [pl_mpeg](https://github.com/phoboslab/pl_mpeg) at commit
 `c871f2be022ece7ef4f64230b4fb8e1fb9eb6023` (MIT license).
 
@@ -24,8 +24,10 @@ cmake --build build --config Debug
 ```
 
 The build copies `assets/background/kerr_newman.mpg` beside the executable.
-Close the window or press Escape to exit. The pre-rendered background has a
-fixed camera; mouse and keyboard no longer control it.
+Press `A` / `D` or the left and right arrow keys to move along the lane. Hold
+`Space` to fire cyan bolts to the right while dodging orange enemy rounds.
+Destroy the enemy core to win. Press `R` after a win or loss to restart, or
+press `Escape` to exit.
 
 The video is 1280 × 720, 24 FPS, four seconds long, and loops without audio.
 The runtime decodes it on a worker thread, uploads each new frame to a raylib
